@@ -1,0 +1,26 @@
+---
+- hosts: physical
+  remote_user: stephen.hindmarch
+  vars:
+    remote_key: ".ssh/hindmarchs_cdn_rsa.pub"
+    local_key:  "{{ lookup('env','HOME') }}/.ssh/id_rsa.pub"
+    auth_file: ".ssh/authorized_keys"
+  tasks:
+  - name: does_dot_ssh_exist
+    file:
+      path: .ssh
+      state: directory
+      mode: 0700
+  - name: does_authorized_keys_exist
+    file:
+      path: "{{ auth_file }}"
+      state: touch
+      mode: 0600
+  - name: copy_my_public_key
+    copy:
+      src: "{{ local_key }}"
+      dest: "{{ remote_key }}"
+      mode: 0600
+  - name: add_public_key_to_auth
+    shell: "grep -f {{ remote_key }} {{ auth_file }} > /dev/null || cat {{ remote_key }} >> {{ auth_file }}"
+
