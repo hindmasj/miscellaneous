@@ -1,0 +1,6 @@
+sudo -i
+# umount /mnt/d
+# id sjh
+uid=1000(sjh) gid=1000(sjh) groups=1000(sjh),10(wheel),1001(docker)
+# mount -t drvfs D: /mnt/d -o uid=1000,gid=1000
+# exit
