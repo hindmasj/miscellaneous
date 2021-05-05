@@ -1,0 +1,10 @@
+# local_bashrc
+
+LOCAL=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+
+# Local paths. Put new path at the front to avoid Windows installs coming first
+PATH=/opt/sbt/bin:$PATH
+
+# Local aliases
+alias dmount='mount-d-drive.sh'
+alias dunmount='unmount-d-drive.sh'
