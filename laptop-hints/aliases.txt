@@ -1,6 +1,0 @@
-alias ssh_cdn='ssh hindmarchs@bowanmodel.nat.bt.com -p 2221'
-
-scp_cdn(){
-	scp -P 2221 ${@} hindmarchs@bowanmodel.nat.bt.com:
-}
-
