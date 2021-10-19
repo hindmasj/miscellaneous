@@ -4,7 +4,7 @@
 user=$(id -ur)
 group=$(id -gr)
 mp="/mnt/d"
-mkdir -p ${mp}
 
+sudo mkdir -p ${mp}
 sudo mount -t drvfs D:\\ ${mp} -o uid=${user},gid=${group}
 
