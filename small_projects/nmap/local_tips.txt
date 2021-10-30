@@ -1,0 +1,3 @@
+Ping Scan : nmap -sn 192.168.1.0/24
+
+Port Scan : nmap -p 22,80 192.168.1.97

@@ -1,0 +1,6 @@
+umount /dev/mapper/crypt-foo
+lvextend -L +10G /dev/fedora/foo
+cryptsetup resize foo
+e2fsck -f /dev/mapper/work
+resize2fs /dev/mapper/work 318G
+

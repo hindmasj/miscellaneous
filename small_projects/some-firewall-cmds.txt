@@ -1,0 +1,26 @@
+firewall-cmd --get-active-zones
+firewall-cmd --zone=external --list-services
+firewall-cmd --zone=external --list-ports
+firewall-cmd --zone=external --list-all
+firewall-cmd --get-services
+firewall-cmd --info-service=ssh
+firewall-cmd --info-zone=external
+firewall-cmd --zone=external --add-port=<port>[-<port>]
+firewall-cmd --zone=external --remove-port=<port>[-<port>]
+firewall-cmd --zone=external --add-service=<service>
+firewall-cmd --zone=external --remove-service=<service>
+
+firewall-cmd --new-zone=trusted --permanent
+firewall-cmd --reload
+firewall-cmd --zone=trusted --add-source=192.0.2.4/32
+firewall-cmd --zone=trusted --add-port=4567/tcp
+
+# Combination rule, either rich rule or specific zone
+# Specific zone, preferred
+firewall-cmd --new-zone=dropboxlansync --permanent
+firewall-cmd --reload
+firewall-cmd --zone=dropboxlansync --add-source=192.168.1.89/32
+firewall-cmd --zone=dropboxlansync --add-port=17500/tcp
+firewall-cmd --zone=dropboxlansync --add-port=17500/udp
+# Rich rule, not preferred
+firewalld-cmd --zone=trusted
