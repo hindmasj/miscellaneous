@@ -1,6 +1,4 @@
 #!/bin/bash
-
-#!/bin/sh
  
 IFACE="wlp2s0"
  
