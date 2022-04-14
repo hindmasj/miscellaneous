@@ -20,6 +20,7 @@
 
     <!-- Cloudera -->
     <profile>
+      <id>cloudera</id>
       <activation>
         <property>
           <name>env.USE_CLOUDERA_PROFILE</name>
@@ -46,6 +47,7 @@
 
     <!-- Apache -->
     <profile>
+      <id>apache</id>
       <activation>
         <property>
           <name>env.USE_APACHE_PROFILE</name>
@@ -61,11 +63,12 @@
           <id>apache-snapshots</id>
           <url>https://repository.apache.org/content/repositories/snapshots/</url>
         </repository>
-      </repository>
+      </repositories>
     </profile>
 
     <!-- Conjars -->
     <profile>
+      <id>conjars</id>
       <activation>
         <property>
           <name>env.USE_CONJARS_PROFILE</name>
