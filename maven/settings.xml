@@ -1,0 +1,85 @@
+<settings
+  xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.
+  1.0.xsd"
+  >
+
+  <proxies>
+    <proxy>
+      <id>atwork-proxy-http</id>
+      <active>false</active>
+      <protocol>http</protocol>
+      <host>sp-svr004.intranet.net</host>
+      <port>8080</port>
+      <nonProxyHosts>*.intranet.net</nonProxyHosts>
+    </proxy>
+  </proxies>
+
+  <profiles>
+
+    <!-- Cloudera -->
+    <profile>
+      <activation>
+        <property>
+          <name>env.USE_CLOUDERA_PROFILE</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>cloudera</id>
+          <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+        <repository>
+          <id>cloudera-third-party</id>
+          <url>https://repository.cloudera.com/artifactory/ext-release-local/</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>cloudera-third-party-plugins</id>
+          <url>https://repository.cloudera.com/artifactory/ext-release-local/</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <!-- Apache -->
+    <profile>
+      <activation>
+        <property>
+          <name>env.USE_APACHE_PROFILE</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>apache-releases</id>
+          <url>https://repository.apache.org/content/repositories/releases/</url>
+        </repository>
+        <repository>
+          <id>apache-snapshots</id>
+          <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </repository>
+      </repository>
+    </profile>
+
+    <!-- Conjars -->
+    <profile>
+      <activation>
+        <property>
+          <name>env.USE_CONJARS_PROFILE</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>conjars-org</id>
+          <url>https://conjars.org/repo/</url>
+        </repository>
+      </repositories>
+    </profile>
+
+  </profiles>
+
+</settings>
