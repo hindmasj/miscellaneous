@@ -1,0 +1,9 @@
+ 1002  mkdir clones
+ 1003  cd clones
+ 1004  git clone https://github.com/elastic/docs.git
+ 1006  mv docs/ elasticsearch-docs
+ 1047  git clone  https://github.com/elastic/elasticsearch.git
+
+ 1007  cd elasticsearch-docs/
+ 1038  ./build_docs --help
+ 1044  more conf.yaml
