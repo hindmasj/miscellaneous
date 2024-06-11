@@ -20,17 +20,24 @@ then
     exit 3
 fi
 
+IMAGE=maven:latest
+docker pull ${IMAGE}
+
 CLONE=$(readlink -f ${CLONE})
 NAME=$(basename ${CLONE})
-TARGET=${CLONE}/target
-mkdir -p ${TARGET}
+
+shift
+COMMAND=${@}
+if [ -z "${COMMAND}" ]
+then
+    COMMAND="mvn test install"
+fi
 
 docker run -it --rm \
     -v "${CLONE}":/usr/src/mymaven \
     -v "${HOME}/.m2":/root/.m2 \
-    -v "${TARGET}":/usr/src/mymaven/target \
     -w /usr/src/mymaven \
     --name "maven-builder-${NAME}" \
-    maven \
-    mvn test install
+    ${IMAGE} \
+    ${COMMAND}
 
