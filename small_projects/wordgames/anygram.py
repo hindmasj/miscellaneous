@@ -1,10 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
-# dnf install aspell aspell-en
+# sudo dnf install aspell aspell-en
 # ./create_word_list.sh
 # ./anygram.py maple 4|sort|comm -1 -2 wordlist -
 #
 # ./anygram.py maple 3|sort|uniq|more
+#
+# or
+#
+# sudo dnf install hunspell hunspell-en
+# ./anygram.py carnivore 4 | awk '/.*o.*/' | sort | uniq | hunspell -G
 #
 
 from sys import argv
@@ -14,7 +19,7 @@ def wordToList(word):
 
 def anyGram(word,letList,letPick):
     if letPick<=0:
-        print word
+        print(word)
         return
     for x in range(len(letList)):
         anyGram(word+letList[x],
