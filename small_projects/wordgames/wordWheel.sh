@@ -9,7 +9,7 @@ MINLEN=4
 
 PROG="${loc}/anygram.py"
 DICT="${loc}/wordWheel.dict"
-LOCALE="en_GB"
+LOCALE="en_US"
 PKG="hunspell"
 
 chk=$(which ${PKG} 2>/dev/null)
