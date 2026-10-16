@@ -29,4 +29,5 @@ fi
 for currlen in $(seq ${MINLEN} ${len})
 do
     ${PROG} ${WORD} ${currlen} | awk "/.*${LETTER}.*/" | sort | uniq | ${PKG} -G -d ${LOCALE} -p ${DICT}
-done
+done | sort
+
